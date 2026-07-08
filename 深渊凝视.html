@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>深渊凝视</title>
+<style title="Twine CSS">
+@charset "UTF-8";
+body {
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #e0e0e0;
+    font-family: "Microsoft YaHei", "SimHei", sans-serif;
+    line-height: 1.8;
+}
+#passages {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+.passage {
+    background: rgba(20, 20, 40, 0.7);
+    border: 1px solid rgba(100, 100, 200, 0.2);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(80, 80, 180, 0.1);
+}
+a.link-internal, a.link-external {
+    color: #a0a0ff;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(160, 160, 255, 0.4);
+    transition: all 0.3s;
+    display: inline-block;
+    margin: 5px 0;
+}
+a.link-internal:hover, a.link-external:hover {
+    color: #d0d0ff;
+    border-bottom: 1px solid #d0d0ff;
+    text-shadow: 0 0 10px rgba(160, 160, 255, 0.5);
+}
+.hypnotic {
+    color: #ff80ab;
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(255, 128, 171, 0.3);
+}
+.memory {
+    color: #80deea;
+    border-left: 3px solid #80deea;
+    padding-left: 15px;
+    margin: 10px 0;
+    background: rgba(128, 222, 234, 0.05);
+}
+.warning {
+    color: #ffab91;
+    font-weight: bold;
+}
+.stat-box {
+    background: rgba(30, 30, 60, 0.8);
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-left: 3px solid #7986cb;
+    font-size: 0.95em;
+}
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(100,100,200,0.4), transparent);
+    margin: 25px 0;
+}
+.choice-container a {
+    display: block;
+    background: rgba(40, 40, 80, 0.6);
+    border: 1px solid rgba(100, 100, 200, 0.3);
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin: 8px 0;
+    color: #b0b0ff;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.choice-container a:hover {
+    background: rgba(60, 60, 120, 0.8);
+    border-color: rgba(160, 160, 255, 0.6);
+    transform: translateX(5px);
+    color: #e0e0ff;
+}
+.ending-box {
+    text-align: center;
+    padding: 40px 20px;
+}
+.ending-box h1 {
+    color: #ff80ab;
+    text-shadow: 0 0 20px rgba(255,128,171,0.5);
+}
+.ending-box h2 {
+    color: #80deea;
+}
+</style>
+</head>
+<body>
+<div id="passages"></div>
+
+<tw-storydata name="深渊凝视" startnode="1" creator="Twine" creator-version="2.8.0" ifid="A1B2C3D4-E5F6-7890-1234-567890ABCDEF" zoom="1" format="SugarCube" format-version="2.36.1" options="" hidden="">
+
+<tw-passagedata pid="1" name="初始化" tags="startup" position="100,100" size="100,100">
+<<silently>>
+<<set $sanity to 80>>
+<<set $willpower to 70>>
+<<set $suspicion to 10>>
+<<set $dependence to 5>>
+<<set $memory to 0>>
+<<set $hypnosis to 15>>
+<<set $day to 1>>
+<<set $time to "早晨">>
+<<set $metDoctor to false>>
+<<set $foundDiary to false>>
+<<set $tookPills to false>>
+<<set $examinedRoom to false>>
+<</silently>>
+
+<div style="text-align:center; padding: 40px 20px;">
+<h1 style="color: #a0a0ff; text-shadow: 0 0 30px rgba(160,160,255,0.4); font-size: 2.5em;">深渊凝视</h1>
+<p style="color: #b0b0d0; font-size: 1.1em; margin: 20px 0;">
+一款关于催眠、记忆与自由意志的心理惊悚互动小说
+</p>
+<p style="color: #7986cb; font-size: 0.9em;">
+你的每一个选择都会改变故事的走向。<br>
+在觉醒与沉沦之间，找到属于你的真相。
+</p>
+<hr style="max-width: 300px; margin: 30px auto;">
+<p style="color: #ffab91; font-size: 0.85em;">
+⚠️ 本游戏包含心理恐怖、精神控制暗示等内容<br>
+请确保你在舒适的状态下进行游戏
+</p>
+</div>
+
+[[开始游戏|序章：醒来]]
+</tw-passagedata>
+
+<tw-passagedata pid="2" name="序章：醒来" tags="" position="300,100" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你睁开眼睛。
+
+天花板是陌生的白色。不是你家那盏有裂纹的日光灯，也不是出租屋斑驳的墙皮。这是一间干净得近乎 sterile 的房间，空气中飘着淡淡的消毒水味。
+
+你试图回忆自己是怎么来到这里的——
+
+……想不起来。
+
+最后清晰的记忆是……是什么？你皱起眉头，太阳穴传来一阵钝痛。好像有什么东西在阻止你继续想下去。
+
+<span class="hypnotic">「不要勉强自己。」</span>
+
+一个声音在脑海中响起。温柔、平静，像是从很远的地方传来，又像是你自己的念头。你不确定。
+
+床头柜上放着一杯水和两片白色药片。旁边是一张便签：
+
+<div class="memory">
+「按时服药。下午林医生会来复诊。——苏」
+</div>
+
+苏是谁？林医生又是谁？
+
+你低头看着自己的双手。左手腕内侧有一道淡粉色的疤痕，很新，还没完全愈合。你不记得这是怎么来的。
+
+<hr>
+<div class="choice-container">
+[[💊 服下那片药——也许这能让你好受些|服药]]
+[[🔍 先不急着吃药，仔细检查这个房间|检查房间]]
+[[🚪 下床，试着离开这个房间|试图离开]]
+</div>
+</tw-passagedata>
+<tw-passagedata pid="3" name="服药" tags="" position="200,300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你拿起药片，就着温水服下。
+
+味道很苦，但咽下去之后，那种头痛的感觉确实减轻了。取而代之的是一种……轻盈感。像是思维被一层柔软的棉花包裹起来，所有的尖锐棱角都被磨平了。
+
+<span class="hypnotic">「很好。你做得很好。」</span>
+
+那个声音又出现了。这次你几乎能确定它不是来自外界——没有人在房间里。但它让你感到……安心？
+
+<<silently>>
+<<set $sanity to $sanity + 5>>
+<<set $willpower to $willpower - 5>>
+<<set $dependence to $dependence + 10>>
+<<set $hypnosis to $hypnosis + 8>>
+<<set $tookPills to true>>
+<</silently>>
+
+<div class="warning">
+💊 理智 +5 | 意志 -5 | 依赖 +10 | 催眠深度 +8%
+</div>
+
+你靠在床头，感到一种奇异的平静。窗外的阳光似乎变得更柔和了，房间里的一切都笼罩在一层温暖的光晕中。
+
+但当你试图再次回忆自己是谁、为什么会在这里时——一片空白。而且奇怪的是，你并不那么在意了。
+
+<hr>
+[[继续|午后：林医生到访]]
+</tw-passagedata>
+
+<tw-passagedata pid="4" name="检查房间" tags="" position="400,300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你把药片放到一边，开始仔细观察这个房间。
+
+房间不大，但布置得很精心。一张单人床，一个床头柜，一把椅子，一扇紧闭的门。没有窗户——等等，有一扇，但被厚重的遮光帘遮住了。
+
+你掀开窗帘一角。外面不是街道，不是花园，而是一堵灰色的水泥墙。距离窗户不到两米。
+
+<span class="warning">这不是一个普通的病房。</span>
+
+你继续搜索：
+
+- 床头柜抽屉里：一本翻开的笔记本，上面写满了你的名字，一遍又一遍，字迹从工整逐渐变得狂乱，最后一页只有一句话：「不要相信任何人，尤其是——」后面被撕掉了。
+
+- 床底下：一根断裂的铅笔，笔尖沾着暗褐色的痕迹。像是……干涸的血？
+
+- 门把手：从里面可以转动，但推不开。似乎被从外面锁住了。
+
+<<silently>>
+<<set $suspicion to $suspicion + 20>>
+<<set $sanity to $sanity - 5>>
+<<set $memory to $memory + 15>>
+<<set $examinedRoom to true>>
+<</silently>>
+
+<div class="warning">
+🔍 怀疑 +20 | 理智 -5 | 记忆碎片 +15
+</div>
+
+你的心跳加速了。这个房间在告诉你一些事情——关于你为什么会在这里，关于那个「苏」是谁，关于那个被撕掉的结尾到底写了什么。
+
+但就在你准备继续搜索时，门锁传来「咔哒」一声轻响。有人来了。
+
+<hr>
+<div class="choice-container">
+[[迅速回到床上，假装什么都没发生|假装平静]]
+[[站在原地，直面进来的人|直面来者]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="5" name="试图离开" tags="" position="600,300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你掀开被子，双脚踩在地上。一阵眩晕袭来，你扶住墙壁才没有摔倒。
+
+身体很虚弱，但还能走。你一步步挪到门边，握住门把手——转得动。但推不开。
+
+你加大了力气，门纹丝不动。然后你注意到门缝底部有一线光亮，你趴下去看——走廊是空的。白色的墙壁，白色的地板，延伸到远处一个拐角。没有声音，没有其他人。
+
+一种被遗弃的恐惧攫住了你。
+
+<<silently>>
+<<set $suspicion to $suspicion + 10>>
+<<set $sanity to $sanity - 10>>
+<<set $willpower to $willpower + 5>>
+<</silently>>
+
+<div class="warning">
+🔍 怀疑 +10 | 理智 -10 | 意志 +5
+</div>
+
+你敲了敲门，喊了几声。没有人回应。
+
+就在你开始恐慌的时候，那个温柔的声音又在脑海中响起：
+
+<span class="hypnotic">「冷静下来。深呼吸。一切都会好起来的。」</span>
+
+奇怪的是，你真的冷静下来了。就像有人按下了你神经系统的某个开关。这让你更加不安。
+
+<hr>
+[[回到床上，等待|等待]]
+</tw-passagedata>
+
+<tw-passagedata pid="6" name="假装平静" tags="" position="300,500" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你迅速把笔记本塞回抽屉，跳回床上，拉好被子。
+
+门开了。一个穿着白大褂的中年男人走进来，身后跟着一个年轻女人。男人戴着金丝边眼镜，笑容温和得像一位慈祥的长辈。
+
+「醒了？感觉怎么样？」他在床边的椅子上坐下，翻开手中的病历夹，「我是林医生。这位是苏护士，这段时间主要由她照顾你。」
+
+苏护士——那个便签上的「苏」。她看起来二十五六岁，黑色长发，表情平静得近乎空洞。她看你的眼神……不像是在看一个病人，更像是在看一件——
+
+<span class="hypnotic">「一件珍贵的物品。」</span>
+
+不，那个声音又来了。这次它说出了你正在想的比喻。
+
+林医生似乎没注意到你的异样，继续说道：「你经历了严重的精神创伤，导致选择性失忆。我们用了一些……特殊的治疗手段，帮助你稳定下来。」
+
+<<silently>>
+<<set $metDoctor to true>>
+<</silently>>
+
+他顿了顿，镜片后的眼睛直视着你：「你记得自己为什么入院吗？」
+
+<hr>
+<div class="choice-container">
+[[诚实回答：什么都不记得|诚实回答]]
+[[隐瞒发现：试探他的反应|试探医生]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="7" name="直面来者" tags="" position="500,500" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你站在原地，手里还攥着那本写满你名字的笔记本。
+
+门开了。一个穿白大褂的男人走进来，看到你手里的东西，脚步微微一顿。但他很快恢复了那副温和的笑容。
+
+「看来你已经发现了一些东西。」他的语气里没有惊讶，只有一种……了然？「我是林医生。把本子给我吧，那些只是治疗过程中的记录，对你现在的恢复没有帮助。」
+
+他伸出手。苏护士站在他身后，目光落在你身上。她的眼睛很黑，深得像是两个没有底的洞。
+
+<<silently>>
+<<set $metDoctor to true>>
+<<set $suspicion to $suspicion + 10>>
+<<set $willpower to $willpower + 5>>
+<</silently>>
+
+<div class="warning">
+🔍 怀疑 +10 | 意志 +5
+</div>
+
+<hr>
+<div class="choice-container">
+[[把笔记本给他——现在不是对抗的时候|交出笔记本]]
+[[拒绝：「在我知道这是什么之前，我不会给任何人」|拒绝交出]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="8" name="等待" tags="" position="700,500" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你回到床上，拉好被子。
+
+等待的时间比想象中漫长。阳光从遮光帘的缝隙中移动，从床头移到床尾。你数着秒针的滴答声——不，房间里根本没有时钟。那滴答声是从哪里来的？
+
+<span class="hypnotic">「一、二、三……放松……」</span>
+
+你猛然惊醒。你刚才……睡着了？还是——
+
+门锁响了。一个穿白大褂的男人走进来，身后跟着一个年轻女人。
+
+「醒了？感觉怎么样？」他在床边坐下，「我是林医生。这位是苏护士。」
+
+<<silently>>
+<<set $metDoctor to true>>
+<<set $hypnosis to $hypnosis + 5>>
+<<set $dependence to $dependence + 5>>
+<</silently>>
+
+<div class="warning">
+🌀 催眠深度 +5% | 💜 依赖 +5
+</div>
+
+「你经历了严重的精神创伤，」林医生说，「导致了选择性失忆。不过不用担心，我们的治疗方案很有效。」
+
+<hr>
+<div class="choice-container">
+[[问他：「什么治疗方案？」|询问治疗]]
+[[沉默，观察他的表情|沉默观察]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="9" name="诚实回答" tags="" position="200,700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我什么都不记得。」你说，「最后清晰的记忆……是一片空白。就像有人用橡皮擦把我的人生擦掉了一样。」
+
+林医生点点头，在病历上写了些什么。「这是典型的创伤后应激性失忆。你的大脑在保护你，屏蔽了那些过于痛苦的记忆。」
+
+他放下笔，身体微微前倾：「但记忆不会真正消失，只是被锁起来了。我们的治疗目标，就是帮你——<span class="hypnotic">安全地</span>——重新打开那些门。」
+
+那个词他说得很轻，但你的注意力完全被它抓住了。「安全地」。为什么他要强调这个词？
+
+苏护士突然开口了，声音柔和得像在哼唱：「林医生是国内顶尖的催眠治疗师。很多患者在他的帮助下找回了失去的记忆。」
+
+<span class="hypnotic">催眠。</span>
+
+这个词像一颗石子投入平静的湖面。你感到一阵眩晕，脑海中闪过一些碎片——一个摆动的怀表。滴答声。一个声音在说「看着我」——然后是一片黑暗。
+
+<<silently>>
+<<set $memory to $memory + 10>>
+<<set $suspicion to $suspicion + 15>>
+<<set $hypnosis to $hypnosis + 10>>
+<</silently>>
+
+<div class="warning">
+🧩 记忆碎片 +10 | 🔍 怀疑 +15 | 🌀 催眠深度 +10%
+</div>
+
+<hr>
+<div class="choice-container">
+[[追问：「你们对我做了什么？」|追问治疗]]
+[[假装接受，暗中观察|暗中观察]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="10" name="试探医生" tags="" position="400,700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我什么都不记得。」你说，同时仔细观察林医生的反应，「但我很好奇——为什么我的病房没有窗户？为什么门从外面锁着？为什么床头柜里有一本写满我名字的笔记本？」
+
+林医生的表情没有变化。一丝都没有。
+
+「你的病房是特殊设计的，」他的语气依然温和，「没有外界刺激，有助于精神稳定。门不是锁着，是从外面加装了安全装置，防止患者在意识不清时做出伤害自己的行为。」
+
+他顿了顿，镜片后的眼睛微微眯起：「至于那本笔记本……」
+
+苏护士走上前，从抽屉里拿出那本笔记本，当着你的面翻开。你看到了——
+
+<span class="warning">空白。</span>
+
+每一页都是空白的。干净的、雪白的、没有任何字迹的纸。
+
+「治疗过程中，患者有时会产生幻觉。」林医生的声音依然平静，「把想象中的内容当成真实的记忆。这在恢复期很常见。」
+
+但你知道你看到了。那些狂乱的字迹，那句「不要相信任何人」——
+
+<span class="hypnotic">「也许……也许真的是我记错了？」</span>
+
+<<silently>>
+<<set $sanity to $sanity - 10>>
+<<set $suspicion to $suspicion + 20>>
+<<set $willpower to $willpower - 5>>
+<</silently>>
+
+<div class="warning">
+🧠 理智 -10 | 🔍 怀疑 +20 | 💪 意志 -5
+</div>
+
+<hr>
+<div class="choice-container">
+[[坚持：「我看到了字。很多字。」|坚持所见]]
+[[沉默——现在不是对抗的时候|暂时退让]]
+</div>
+</tw-passagedata>
+<tw-passagedata pid="11" name="交出笔记本" tags="" position="600,700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你把笔记本递过去。林医生接过来，随手翻了翻，然后递给苏护士。
+
+「这些只是治疗记录。」他说，「你的大脑在恢复过程中会产生很多混乱的信号，把它们写下来有助于整理思绪。不过，现在你应该专注于休息，而不是纠结于这些碎片。」
+
+苏护士把笔记本收进白大褂的口袋里。她的动作很慢，像是在刻意让你看到——那个口袋很深，笔记本放进去就消失了，像被吞噬了一样。
+
+「今天的治疗到此为止。」林医生站起来，「明天我们会开始正式的恢复疗程。苏护士会给你送晚餐来。」
+
+他走到门口，突然回头：「对了，药片吃了吗？」
+
+<<if $tookPills>>
+你点点头。「很好。」他的笑容加深了，「保持这样。你会好起来的。」
+<<else>>
+你犹豫了一下，摇摇头。他的笑容没有变化，但眼神冷了一瞬。只是一瞬，快得让你怀疑自己看错了。「记得吃。」他说，「那是为了你好。」
+<</if>>
+
+<<silently>>
+<<set $dependence to $dependence + 5>>
+<</silently>>
+
+<div class="warning">💜 依赖 +5</div>
+
+门在他们身后关上。你听到锁扣落下的声音。
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="12" name="拒绝交出" tags="" position="800,700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「在我知道这是什么之前，」你把笔记本攥得更紧，「我不会给任何人。」
+
+房间里的空气似乎凝固了一秒。
+
+林医生叹了口气，那声叹息里有一种奇怪的……满意？「抗拒治疗也是恢复期的正常反应。」他对苏护士说，「记录一下，明天调整方案。」
+
+苏护士点点头，从口袋里掏出一个小本子——不是刚才那个，是另一个，封面上印着编号：「S-07」。
+
+她看了你一眼。那一眼让你脊背发凉。不是因为敌意，而是因为——
+
+<span class="hypnotic">她好像在笑。</span>
+
+「你会改变主意的。」林医生说，语气像是在陈述一个既定事实，「所有人都会。」
+
+他们离开了。门再次锁上。
+
+你低头看着手中的笔记本。那些狂乱的字迹在颤抖的灯光下似乎在蠕动，像是有生命的东西。
+
+<<silently>>
+<<set $willpower to $willpower + 10>>
+<<set $dependence to $dependence - 5>>
+<<set $suspicion to $suspicion + 15>>
+<</silently>>
+
+<div class="warning">💪 意志 +10 | 💜 依赖 -5 | 🔍 怀疑 +15</div>
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="13" name="询问治疗" tags="" position="100,900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「什么治疗方案？」你问。
+
+林医生微笑着，从口袋里掏出一块怀表。银色的表壳，复古的罗马数字，秒针走动的声音在安静的房间里格外清晰。
+
+「一种……深度放松技术。」他说，「帮助你打开被封锁的记忆，同时确保过程是安全的、可控的。」
+
+他打开怀表盖。秒针在摆动。
+
+<span class="hypnotic">滴答。滴答。滴答。</span>
+
+你感到一阵强烈的眩晕。那个声音——那个一直在你脑海中的温柔声音——和怀表的滴答声重叠了。
+
+「看着我。」林医生说。
+
+你的视线不由自主地被怀表吸引。秒针的摆动。规律的、催眠的、不可抗拒的——
+
+<<silently>>
+<<set $hypnosis to $hypnosis + 15>>
+<<set $willpower to $willpower - 10>>
+<<set $dependence to $dependence + 10>>
+<</silently>>
+
+<div class="warning">🌀 催眠深度 +15% | 💪 意志 -10 | 💜 依赖 +10</div>
+
+<hr>
+<<if $willpower gte 50>>
+<div class="choice-container">
+[[拼命移开视线——不要看他的眼睛！|抵抗催眠]]
+</div>
+<<else>>
+<div class="choice-container">
+[[你的视线无法移开……|被催眠]]
+</div>
+<</if>>
+</tw-passagedata>
+
+<tw-passagedata pid="14" name="沉默观察" tags="" position="300,900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你没有说话，只是静静地看着林医生。
+
+他似乎对你的沉默并不意外。他翻开病历，开始朗读：「患者，性别不明，年龄约25岁，于三周前被送至本院。入院时处于严重的解离状态，无法识别自身身份，伴有自残行为和攻击性倾向。」
+
+他抬起头，镜片后的眼睛直视着你：「这是你的入院记录。你对自己有任何印象吗？」
+
+三周。你已经在这里三周了。但你不记得任何一天。每一天都是空白，像被精心擦除的磁带。
+
+「治疗需要时间。」林医生合上病历，「明天我们会开始第一阶段的恢复疗程。今晚好好休息。」
+
+他和苏护士离开了。但在关门前，苏护士回头看了你一眼。
+
+那一眼里有什么？怜悯？期待？还是——
+
+<span class="hypnotic">成就感？</span>
+
+<<silently>>
+<<set $suspicion to $suspicion + 10>>
+<<set $memory to $memory + 5>>
+<</silently>>
+
+<div class="warning">🔍 怀疑 +10 | 🧩 记忆碎片 +5</div>
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="15" name="追问治疗" tags="" position="500,900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「你们对我做了什么？」你的声音比想象中更尖锐。
+
+林医生没有立刻回答。他看了苏护士一眼，苏护士微微点头。
+
+「我们救了你。」他终于说，语气依然平静，「你入院时，手腕上的伤口深可见骨。你试图结束自己的生命。如果我们没有介入，你现在不会在这里说话。」
+
+手腕上的疤痕。那个淡粉色的、新鲜的疤痕。是你自己……？
+
+「但自杀未遂不会导致失忆。」你说。
+
+林医生笑了。那是一个真正的笑容，带着某种……赞赏？「你很敏锐。这正是我们选择你的原因。」
+
+<span class="warning">选择？</span>
+
+「休息吧。」他站起来，「明天你会明白更多。」
+
+<<silently>>
+<<set $suspicion to $suspicion + 25>>
+<<set $memory to $memory + 10>>
+<</silently>>
+
+<div class="warning">🔍 怀疑 +25 | 🧩 记忆碎片 +10</div>
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="16" name="暗中观察" tags="" position="700,900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你低下头，表现出顺从的样子。「我明白了。我会配合治疗的。」
+
+林医生似乎很满意。他在病历上写了些什么，然后和苏护士一起离开了。
+
+但你在他们转身的瞬间，看到了——苏护士的白大褂口袋里，露出一角照片。照片上是一个人的侧脸。那个人……
+
+<span class="warning">是你。</span>
+
+但照片里的你闭着眼睛，嘴角带着一种你从未在自己脸上见过的微笑。一种……满足的、放松的、几乎可以说是幸福的微笑。
+
+照片的边缘印着日期。是你入院的前一天。
+
+<<silently>>
+<<set $suspicion to $suspicion + 20>>
+<<set $memory to $memory + 15>>
+<<set $willpower to $willpower + 5>>
+<</silently>>
+
+<div class="warning">🔍 怀疑 +20 | 🧩 记忆碎片 +15 | 💪 意志 +5</div>
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="17" name="坚持所见" tags="" position="900,900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我看到了字。」你的声音在颤抖，但你在强迫自己保持冷静，「很多字。我的名字。一遍又一遍。还有一句话——『不要相信任何人』。」
+
+林医生沉默了。苏护士向前走了一步。她的动作很轻，但你本能地往后缩了缩。
+
+「幻视和幻听是恢复期的常见症状。」林医生终于说，但他的语气不再那么温和了，「你的大脑在试图重建记忆，但缺乏正确的引导，就会产生错误的信号。」
+
+他站起来，整理了一下白大褂。「今天的会面到此为止。苏护士会给你送晚餐和药。<span class="hypnotic">记得按时服药。</span>」
+
+最后那句话有一种奇怪的重量，像是一个命令，又像是一个——<span class="hypnotic">暗示。</span>
+
+<<silently>>
+<<set $willpower to $willpower + 10>>
+<<set $suspicion to $suspicion + 15>>
+<<set $sanity to $sanity - 5>>
+<</silently>>
+
+<div class="warning">💪 意志 +10 | 🔍 怀疑 +15 | 🧠 理智 -5</div>
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="18" name="暂时退让" tags="" position="1100,900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你低下头。「……也许您说得对。我可能只是太累了。」
+
+林医生的笑容恢复了。「理解自己的状况是恢复的第一步。」他拍拍你的肩膀，那触感让你一阵战栗，「好好休息。明天见。」
+
+他们离开了。
+
+你独自坐在床上，盯着那本空白的笔记本。空白的。每一页都是空白的。
+
+但你明明看到了。那些字。那些狂乱的、一遍又一遍写着你名字的字迹。
+
+除非——<span class="hypnotic">除非你真的疯了。</span>
+
+<<silently>>
+<<set $sanity to $sanity - 10>>
+<<set $dependence to $dependence + 10>>
+<</silently>>
+
+<div class="warning">🧠 理智 -10 | 💜 依赖 +10</div>
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="19" name="抵抗催眠" tags="" position="100,1100" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你咬破了自己的舌尖。
+
+疼痛像一道闪电劈开迷雾。你猛地闭上眼睛，把头扭向一边。
+
+「不要！」
+
+房间里安静了一秒。然后你听到林医生轻轻叹了口气。
+
+「很强的意志力。」他说，语气里有一种……欣赏？「这会让治疗过程更有……挑战性。但也更有趣。」
+
+他把怀表收起来。「今天就到这里。明天我们会用更适合你的方式。」
+
+苏护士在离开前看了你一眼。那一眼里没有失望，只有一种——<span class="hypnotic">期待。</span>
+
+<<silently>>
+<<set $willpower to $willpower + 15>>
+<<set $hypnosis to $hypnosis - 5>>
+<<set $sanity to $sanity - 5>>
+<</silently>>
+
+<div class="warning">💪 意志 +15 | 🌀 催眠深度 -5% | 🧠 理智 -5</div>
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="20" name="被催眠" tags="" position="300,1100" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你看着怀表。秒针在摆动。滴答。滴答。
+
+世界在缩小。只剩下那个摆动的秒针，和林医生温柔的声音。
+
+「你很安全。你很放松。你什么都不需要担心。」
+
+你感到自己的肌肉在放松，思维在变得柔软。那些尖锐的疑问，那些不安的猜测，都像阳光下的冰块一样融化了。
+
+「告诉我，」林医生的声音从很远的地方传来，「你看到了什么？」
+
+你看到了——一片白色的房间。一个穿白大褂的男人。一个年轻的女人。他们在对你微笑。
+
+<span class="hypnotic">「他们在帮助你。」</span>
+
+是的。他们在帮助你。这个念头像一颗种子，在你柔软的思维土壤中生根发芽。
+
+「很好。」林医生的声音，「明天见。你会记得按时服药的。」
+
+<<silently>>
+<<set $hypnosis to $hypnosis + 20>>
+<<set $dependence to $dependence + 15>>
+<<set $willpower to $willpower - 15>>
+<<set $suspicion to $suspicion - 10>>
+<</silently>>
+
+<div class="warning">🌀 催眠深度 +20% | 💜 依赖 +15 | 💪 意志 -15 | 🔍 怀疑 -10</div>
+
+<hr>
+[[继续|第一章：第一个夜晚]]
+</tw-passagedata>
+
+<tw-passagedata pid="21" name="午后：林医生到访" tags="" position="500,300" size="100,100">
+<<silently>>
+<<set $time to "下午">>
+<</silently>>
+
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+时间流逝。你靠在床头，试图整理混乱的思绪。
+
+门锁传来响声。门开了。
+
+一个穿白大褂的中年男人走进来，身后跟着一个年轻女人。男人戴着金丝边眼镜，笑容温和得像一位慈祥的长辈。
+
+「醒了？感觉怎么样？」他在床边的椅子上坐下，翻开手中的病历夹，「我是林医生。这位是苏护士，这段时间主要由她照顾你。」
+
+苏护士——那个便签上的「苏」。她看起来二十五六岁，黑色长发，表情平静得近乎空洞。
+
+<<silently>>
+<<set $metDoctor to true>>
+<</silently>>
+
+林医生继续说道：「你经历了严重的精神创伤，导致选择性失忆。我们用了一些……特殊的治疗手段，帮助你稳定下来。」
+
+他顿了顿，镜片后的眼睛直视着你：「你记得自己为什么入院吗？」
+
+<hr>
+<div class="choice-container">
+[[诚实回答：什么都不记得|诚实回答]]
+[[隐瞒发现：试探他的反应|试探医生]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="22" name="第一章：第一个夜晚" tags="" position="500,1100" size="100,100">
+<<silently>>
+<<set $time to "深夜">>
+<</silently>>
+
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+夜幕降临。或者至少你认为那是夜晚——遮光帘挡住了所有光线，房间里只有一盏昏黄的床头灯。
+
+苏护士送来了晚餐。简单的白粥和青菜。还有两片药。
+
+「林医生说，」她放下托盘，「今晚你可以自己决定是否服药。但他说，<span class="hypnotic">服药会让你睡得更安稳。</span>」
+
+她说完就离开了。门再次锁上。
+
+你盯着那两片白色的药片。它们躺在小小的纸杯里，像两颗等待被吞噬的珍珠。
+
+<hr>
+<div class="choice-container">
+<<if $tookPills>>
+[[💊 你已经习惯了——服下它们|再次服药]]
+<<else>>
+[[💊 也许林医生说得对，服药能让你休息|首次服药]]
+<</if>>
+[[🚫 把药片藏到床垫下——你不信任任何人|藏药]]
+[[🔍 趁夜深人静，再次搜索房间|深夜搜索]]
+</div>
+</tw-passagedata>
+<tw-passagedata pid="23" name="再次服药" tags="" position="300,1300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你拿起药片，没有犹豫。
+
+温水冲淡了苦味，但那种熟悉的轻盈感很快又回来了。思维变得柔软，像被温水浸泡的海绵。
+
+你躺下，闭上眼睛。
+
+<span class="hypnotic">「睡吧。明天会是美好的一天。」</span>
+
+那个声音在黑暗中低语。这一次，你没有抗拒。你让自己沉入那片柔软的黑暗。
+
+<<silently>>
+<<set $dependence to $dependence + 15>>
+<<set $hypnosis to $hypnosis + 10>>
+<<set $willpower to $willpower - 10>>
+<</silently>>
+
+<div class="warning">💜 依赖 +15 | 🌀 催眠深度 +10% | 💪 意志 -10</div>
+
+<hr>
+[[进入梦境|梦境：粉色房间]]
+</tw-passagedata>
+
+<tw-passagedata pid="24" name="首次服药" tags="" position="500,1300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你犹豫了一下，最终还是拿起了药片。
+
+「只是帮助睡眠而已。」你对自己说。
+
+温水冲淡了苦味。你躺下，闭上眼睛。
+
+起初什么都没有。然后——
+
+<span class="hypnotic">滴答。滴答。滴答。</span>
+
+怀表的声音。在黑暗中回响。你试图睁开眼睛，但眼皮沉重得像灌了铅。
+
+「放松。」林医生的声音，但这次不是从外界传来，而是直接在你的脑海中响起，「你正在进入一个安全的地方。一个只有快乐的地方。」
+
+<<silently>>
+<<set $dependence to $dependence + 10>>
+<<set $hypnosis to $hypnosis + 12>>
+<<set $willpower to $willpower - 8>>
+<</silently>>
+
+<div class="warning">💜 依赖 +10 | 🌀 催眠深度 +12% | 💪 意志 -8</div>
+
+<hr>
+[[进入梦境|梦境：粉色房间]]
+</tw-passagedata>
+
+<tw-passagedata pid="25" name="藏药" tags="" position="700,1300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你把药片藏在床垫下面，假装已经服下。
+
+晚餐后，你躺在床上，等待。
+
+时间一分一秒过去。没有药物的影响，你的思维异常清醒。清醒得让你害怕。
+
+你开始听到声音。不是那个温柔的声音，而是——
+
+<span class="memory">「……实验体S-07出现排斥反应……」</span>
+
+<span class="memory">「……增加剂量……」</span>
+
+<span class="memory">「……记忆植入成功率87%……」</span>
+
+这些声音像是从墙壁里渗出来的，像是从你的骨头里长出来的。你不知道它们是真实的，还是你疯了。
+
+<<silently>>
+<<set $willpower to $willpower + 15>>
+<<set $suspicion to $suspicion + 20>>
+<<set $memory to $memory + 20>>
+<<set $sanity to $sanity - 15>>
+<</silently>>
+
+<div class="warning">💪 意志 +15 | 🔍 怀疑 +20 | 🧩 记忆碎片 +20 | 🧠 理智 -15</div>
+
+但你也听到了别的声音。更微弱的，更遥远的——
+
+<span class="memory">「……坚持住……不要放弃……有人在帮你……」</span>
+
+那是谁？
+
+<hr>
+[[继续等待|深夜访客]]
+</tw-passagedata>
+
+<tw-passagedata pid="26" name="深夜搜索" tags="" position="900,1300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你等到房间里的灯光自动调暗——似乎是定时控制的——然后从床上爬起来。
+
+借着微弱的夜灯光，你开始搜索。
+
+床头柜：除了那杯水和药片，什么都没有。抽屉是空的。那本笔记本也不见了。
+
+床底下：那根断铅笔还在。你把它捡起来，握在手里。至少这是一样武器。
+
+墙壁：你一寸一寸地摸索，直到——
+
+你的手指触到了一块略微松动的墙板。
+
+你用力一推。墙板后面是一个小空间，里面放着——
+
+<span class="memory">一部手机。屏幕碎裂，但还能开机。</span>
+
+你颤抖着按下电源键。屏幕亮起，显示一条未发送的草稿短信：
+
+<div class="memory">
+「如果你看到这条消息，说明你已经醒了。不要相信林医生，不要相信苏护士。整个医院都是——」
+</div>
+
+短信在这里中断了。
+
+<<silently>>
+<<set $memory to $memory + 25>>
+<<set $suspicion to $suspicion + 25>>
+<<set $sanity to $sanity - 10>>
+<</silently>>
+
+<div class="warning">🧩 记忆碎片 +25 | 🔍 怀疑 +25 | 🧠 理智 -10</div>
+
+<hr>
+[[继续|深夜访客]]
+</tw-passagedata>
+
+<tw-passagedata pid="27" name="深夜访客" tags="" position="700,1500" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+就在你攥着手机（或者断铅笔）的时候，门锁响了。
+
+不是正常的开门声。是某种更轻的、更谨慎的声音。像是有人在用工具撬锁。
+
+你屏住呼吸。
+
+门开了一条缝。一个身影闪了进来。不是林医生，不是苏护士——是一个你从没见过的年轻男人，穿着病号服，眼神疯狂而清醒。
+
+「嘘——」他把手指放在嘴唇上，「我是陈默。S-03。和你一样。」
+
+他快速走到你身边，压低声音：「听着，我们没有多少时间。这个『医院』根本不是什么精神病院。这是一个<span class="warning">催眠实验基地</span>。林医生是项目负责人，苏护士是他的助手。我们这些『病人』，都是实验体。」
+
+<<silently>>
+<<set $memory to $memory + 30>>
+<<set $suspicion to $suspicion + 30>>
+<</silently>>
+
+<div class="warning">🧩 记忆碎片 +30 | 🔍 怀疑 +30</div>
+
+「实验体？」你问。
+
+「他们试图通过深度催眠，植入虚假记忆，改变人格。」陈默的眼睛在黑暗中发亮，「有些人被彻底改造了。有些人……消失了。你手腕上的疤痕，不是自杀，是<span class="warning">反抗时留下的</span>。」
+
+他抓住你的手腕：「你想逃出去吗？还是想继续当他们的傀儡？」
+
+<hr>
+<div class="choice-container">
+[[「告诉我怎么逃。」|计划逃跑]]
+[[「我需要更多证据。」|要求证据]]
+[[「你凭什么让我相信你？」|质疑陈默]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="28" name="梦境：粉色房间" tags="" position="500,1500" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time — 梦境
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你站在一个粉色的房间里。
+
+墙壁是柔和的玫瑰色，地板铺着厚厚的白色地毯。房间里有一张扶手椅，林医生坐在里面，微笑着看着你。
+
+「欢迎回来。」他说，「这里很安全。这里只有快乐。」
+
+你感到一种奇异的平静。所有的恐惧，所有的怀疑，都像被这里的粉色光芒融化了。
+
+<span class="hypnotic">「坐下吧。」</span>
+
+你发现自己已经坐在了另一张椅子上。你不记得自己是怎么移动的。
+
+「告诉我，」林医生的声音像蜂蜜一样流淌，「你今天在想什么？」
+
+<hr>
+<div class="choice-container">
+<<if $suspicion gte 50>>
+[[「我在想……这一切是不是都是假的。」|梦境怀疑]]
+<<else>>
+[[「我在想……也许您说得对。」|梦境顺从]]
+<</if>>
+<<if $willpower gte 60>>
+[[「我在想……我要醒过来。」|梦境觉醒]]
+<</if>>
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="29" name="梦境怀疑" tags="" position="300,1700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time — 梦境
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我在想……」你的声音在粉色的房间里回荡，「这一切是不是都是假的。这个房间。您的微笑。我的记忆。全部。」
+
+林医生的笑容没有变化。但他的眼睛——镜片后的眼睛——有什么东西闪了一下。
+
+「怀疑是健康的。」他说，「但过度的怀疑会伤害你。让我帮你……<span class="hypnotic">放下这些负担。</span>」
+
+他伸出手。你看到他手中握着那块怀表。
+
+<span class="hypnotic">滴答。滴答。</span>
+
+<<silently>>
+<<set $hypnosis to $hypnosis + 15>>
+<<set $willpower to $willpower - 10>>
+<</silently>>
+
+<div class="warning">🌀 催眠深度 +15% | 💪 意志 -10</div>
+
+<hr>
+<<if $willpower gte 40>>
+<div class="choice-container">
+[[「不——」闭上眼睛，拒绝看怀表|梦境抗争]]
+</div>
+<<else>>
+<div class="choice-container">
+[[你的视线被怀表吸引……无法移开|梦境沉沦]]
+</div>
+<</if>>
+</tw-passagedata>
+
+<tw-passagedata pid="30" name="梦境顺从" tags="" position="500,1700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time — 梦境
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我在想……」你的声音很轻，「也许您说得对。也许我不应该想那么多。也许……服从就是最好的选择。」
+
+林医生的笑容加深了。那是一种真正的、发自内心的笑容。
+
+「你终于明白了。」他说，「这就是我一直想让你看到的。放下那些不必要的负担，接受我的引导，你会找到真正的平静。」
+
+他站起来，走到你身边，把手放在你的肩膀上。那触感温暖而有力。
+
+<span class="hypnotic">「从明天开始，一切都会不同。你会成为……最好的版本。」</span>
+
+<<silently>>
+<<set $dependence to $dependence + 20>>
+<<set $hypnosis to $hypnosis + 15>>
+<<set $willpower to $willpower - 15>>
+<<set $suspicion to $suspicion - 15>>
+<</silently>>
+
+<div class="warning">💜 依赖 +20 | 🌀 催眠深度 +15% | 💪 意志 -15 | 🔍 怀疑 -15</div>
+
+<hr>
+[[继续|梦境沉沦]]
+</tw-passagedata>
+
+<tw-passagedata pid="31" name="梦境觉醒" tags="" position="700,1700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time — 梦境
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我在想……我要醒过来。」
+
+林医生的表情第一次出现了变化。他的笑容僵住了。
+
+「这个梦不是你的。」你说，声音越来越坚定，「这个房间，这个粉色，这个扶手椅——全都是你植入的。但我的意识是我的。我的意志是我的。我的——<span class="warning">记忆</span>——是我的。」
+
+你站起来。粉色的房间开始摇晃，像信号不良的电视画面。
+
+「有趣。」林医生说，语气里有一种……兴奋？「很少有人能在深度催眠状态下保持自主意识。你比我想象的……更有价值。」
+
+粉色的房间开始崩塌。像被戳破的泡泡，像褪色的照片。你感到自己在下坠——
+
+然后你睁开了眼睛。
+
+白色的天花板。熟悉的消毒水味。你回到了病房。
+
+但有什么不一样了。你的左手紧紧攥着什么东西。你张开手——
+
+<span class="warning">一片粉色的碎屑。</span>
+
+来自那个梦境的残留物。它不应该存在。但它在这里。
+
+<<silently>>
+<<set $willpower to $willpower + 20>>
+<<set $hypnosis to $hypnosis - 10>>
+<<set $memory to $memory + 15>>
+<</silently>>
+
+<div class="warning">💪 意志 +20 | 🌀 催眠深度 -10% | 🧩 记忆碎片 +15</div>
+
+<hr>
+[[第二天：觉醒]]
+</tw-passagedata>
+
+<tw-passagedata pid="32" name="梦境抗争" tags="" position="200,1900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time — 梦境
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你闭上眼睛。
+
+「不。」
+
+怀表的滴答声依然在耳边回响，但你把注意力集中在自己的呼吸上。吸气。呼气。吸气。呼气。
+
+「睁开眼睛。」林医生的声音，「看着我。」
+
+「不。」
+
+你感到他在靠近。他的呼吸喷在你的脸上。然后——
+
+<span class="memory">疼痛。</span>
+
+不是来自外界，而是来自你的记忆深处。一段被遗忘的记忆突然涌现——
+
+<span class="memory">白色的房间。很多床。很多人。他们的眼睛睁着，但里面没有任何意识。像人偶。而你，躺在其中一张床上，手腕上绑着约束带，一个声音在说：「S-07，实验开始。」</span>
+
+然后你醒了。
+
+<<silently>>
+<<set $willpower to $willpower + 15>>
+<<set $memory to $memory + 20>>
+<<set $hypnosis to $hypnosis - 5>>
+<<set $sanity to $sanity - 10>>
+<</silently>>
+
+<div class="warning">💪 意志 +15 | 🧩 记忆碎片 +20 | 🌀 催眠深度 -5% | 🧠 理智 -10</div>
+
+<hr>
+[[第二天：觉醒]]
+</tw-passagedata>
+
+<tw-passagedata pid="33" name="梦境沉沦" tags="" position="500,1900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time — 梦境
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你看着怀表。秒针在摆动。滴答。滴答。
+
+世界在缩小。只剩下那个摆动的秒针，和林医生温柔的声音。
+
+「你很安全。你很放松。你什么都不需要担心。」
+
+你感到自己的肌肉在放松，思维在变得柔软。那些尖锐的疑问，那些不安的猜测，都像阳光下的冰块一样融化了。
+
+「告诉我，」林医生的声音从很远的地方传来，「你看到了什么？」
+
+你看到了——一片粉色的房间。一个穿白大褂的男人。一个年轻的女人。他们在对你微笑。
+
+<span class="hypnotic">「他们在帮助你。」</span>
+
+是的。他们在帮助你。这个念头像一颗种子，在你柔软的思维土壤中生根发芽。
+
+「很好。」
+
+<<silently>>
+<<set $hypnosis to $hypnosis + 20>>
+<<set $dependence to $dependence + 25>>
+<<set $willpower to $willpower - 20>>
+<<set $suspicion to $suspicion - 15>>
+<</silently>>
+
+<div class="warning">🌀 催眠深度 +20% | 💜 依赖 +25 | 💪 意志 -20 | 🔍 怀疑 -15</div>
+
+<hr>
+[[第二天……|第二天：模糊]]
+</tw-passagedata>
+
+<tw-passagedata pid="34" name="计划逃跑" tags="" position="700,1700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「告诉我怎么逃。」你说。
+
+陈默的眼睛亮了起来。「走廊尽头有一扇安全门，通向紧急楼梯。但那里有摄像头和值班护士。我们需要一个分散注意力的方法。」
+
+他从口袋里掏出一个小瓶子。「这是我从药房偷来的镇静剂。足够让一个人睡上六个小时。如果我们能把它放进值班护士的水杯里——」
+
+「你疯了。」你说，但你的心跳在加速。不是恐惧，是兴奋。
+
+「也许吧。」他笑了，「但疯子才能从这个地方活着出去。」
+
+<<silently>>
+<<set $willpower to $willpower + 10>>
+<<set $memory to $memory + 15>>
+<</silently>>
+
+<div class="warning">💪 意志 +10 | 🧩 记忆碎片 +15</div>
+
+<hr>
+<div class="choice-container">
+[[「我们需要一个计划。」|制定计划]]
+[[「等等——你怎么知道这么多？」|追问陈默]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="35" name="要求证据" tags="" position="900,1700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我需要更多证据。」你说。
+
+陈默似乎早就料到了。他从病号服的内袋里掏出一张皱巴巴的纸。
+
+「这是我从林医生办公室偷出来的实验记录。上面有你——S-07——的完整档案。」
+
+你接过纸，在微弱的夜灯光下阅读：
+
+<div class="memory">
+「实验体S-07，原名███，25岁，自愿参与『人格重塑』项目。实验目标：通过深度催眠和记忆植入，消除实验体的『不良人格特质』，重建符合社会期待的『理想人格』。<br><br>
+实验进展：第一阶段（信任建立）已完成。第二阶段（依赖培养）进行中。预计第三阶段（人格替换）将在两周内启动。<br><br>
+备注：实验体S-07表现出异常的意志力抗性。建议增加药物剂量，并引入『情感锚点』强化控制。」
+</div>
+
+自愿参与？你不记得自己自愿参与过任何东西。
+
+但纸上的字迹，那些关于你的描述——它们是真的。你能感觉到。
+
+<<silently>>
+<<set $memory to $memory + 30>>
+<<set $suspicion to $suspicion + 20>>
+<<set $sanity to $sanity - 10>>
+<</silently>>
+
+<div class="warning">🧩 记忆碎片 +30 | 🔍 怀疑 +20 | 🧠 理智 -10</div>
+
+<hr>
+<div class="choice-container">
+[[「人格替换……是什么意思？」|询问人格替换]]
+[[「我们怎么逃出去？」|计划逃跑2]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="36" name="质疑陈默" tags="" position="1100,1700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「你凭什么让我相信你？」你问，「也许你也是他们的人。也许这是另一个测试。也许——」
+
+「也许。」陈默打断你，「但问问你自己：你手腕上的疤痕，你自己记得是怎么来的吗？你床头柜里的笔记本，上面的字为什么消失了？林医生看你的眼神，真的像在看一个病人吗？」
+
+他走近一步，压低声音：「我知道你在害怕。害怕相信，害怕被骗，害怕这一切真的是你的幻觉。但我在这里，冒着被发现的危险，来告诉你真相。如果这是测试，我已经失败了。如果这是幻觉，那至少我们是一起疯的。」
+
+他的眼睛在黑暗中发亮。疯狂，但清醒。
+
+<<silently>>
+<<set $willpower to $willpower + 5>>
+<<set $suspicion to $suspicion + 10>>
+<</silently>>
+
+<div class="warning">💪 意志 +5 | 🔍 怀疑 +10</div>
+
+<hr>
+<div class="choice-container">
+[[「好吧。告诉我你知道的一切。」|听取真相]]
+[[「我需要时间考虑。」|暂时观望]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="37" name="第二天：觉醒" tags="" position="500,2100" size="100,100">
+<<silently>>
+<<set $day to 2>>
+<<set $time to "早晨">>
+<</silently>>
+
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+阳光——或者说，人造光源——再次亮起。
+
+你睁开眼睛。昨晚的记忆像潮水一样涌来：粉色的房间、迷宫、追逐、或者……什么都没有。取决于你经历了什么。
+
+但有一件事是确定的：
+
+<span class="warning">你还在这里。</span>
+
+门锁传来响声。门开了。
+
+苏护士走进来，推着早餐车。她看了你一眼——那一眼和昨天不同。如果昨天她的眼神是空洞的，今天则多了一丝……评估？像是在重新审视一件商品的价值。
+
+「林医生说，」她把托盘放在床头柜上，「今天的治疗方案需要调整。根据你昨晚的表现。」
+
+她顿了顿，嘴角微微上扬：「他对你……很期待。」
+
+<hr>
+<div class="ending-box">
+<h2 style="color: #80deea;">🎮 第一章 · 完 🎮</h2>
+<p>恭喜你完成了《深渊凝视》的第一章！</p>
+<div class="stat-box" style="margin: 20px auto; max-width: 500px; text-align: left;">
+📊 当前状态<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion<br>
+💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<p>你的选择塑造了这个故事的走向。在后续章节中，你将：</p>
+<ul style="text-align: left; display: inline-block;">
+<li>🔓 探索更多关于「实验」的真相</li>
+<li>🤝 与神秘网友「O」建立联系</li>
+<li>⚔️ 在觉醒与沉沦之间做出关键抉择</li>
+<li>🌀 发现关于你自己的惊人秘密……</li>
+</ul>
+<p><strong>提示：</strong>尝试不同的选择，看看能解锁哪些隐藏剧情和结局！</p>
+[[🔄 重新开始|初始化]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="38" name="第二天：模糊" tags="" position="700,2100" size="100,100">
+<<silently>>
+<<set $day to 2>>
+<<set $time to "早晨">>
+<</silently>>
+
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你睁开眼睛。
+
+阳光——或者说，人造光源——再次亮起。
+
+你感到……很好。一种平静的、满足的、几乎可以说是幸福的感觉。昨晚发生了什么？你不太确定。但有什么关系呢？
+
+苏护士走进来，推着早餐车。她对你微笑。你也对她微笑。
+
+「林医生说，」她说，「今天的治疗会很愉快。你会喜欢的。」
+
+<span class="hypnotic">「是的。我会喜欢的。」</span>
+
+你听到自己说。或者你只是想到了这个词。在这个房间里，语言和思想的界限如此模糊。
+
+<hr>
+<div class="ending-box">
+<h2 style="color: #ffab91;">🌫️ 第一章 · 完：迷雾中的微笑 🌫️</h2>
+<div class="stat-box" style="margin: 20px auto; max-width: 500px; text-align: left;">
+📊 当前状态<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion<br>
+💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<p>你的记忆变得模糊了。但这让你感到……安心？</p>
+<p><strong>提示：</strong>依赖度过高会导致记忆丢失。也许在其他选择中，你能保留更多关于自己的真相。</p>
+[[🔄 重新开始|初始化]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="39" name="制定计划" tags="" position="700,1900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我们需要一个计划。」你说。
+
+陈默点点头。「明天凌晨三点，值班护士换班。新护士会先去休息室喝水——我已经在她的水杯里放了镇静剂。等她睡着，我们从安全门出去，走紧急楼梯到地下停车场。那里有一辆救护车，钥匙在驾驶座下面。」
+
+「你怎么知道这么多？」
+
+「因为我已经试过三次了。」他的笑容里有一丝苦涩，「前两次被抓回来，第三次……」他指了指自己的太阳穴，「他们『处理』了我的记忆。但我写了日记，藏在床垫下面。每次被『处理』后，我靠日记重新记起一切。」
+
+<<silently>>
+<<set $willpower to $willpower + 15>>
+<<set $memory to $memory + 20>>
+<</silently>>
+
+<div class="warning">💪 意志 +15 | 🧩 记忆碎片 +20</div>
+
+「明天凌晨三点。」陈默握住你的手，「如果你决定走，在门上敲三下。我会来接你。」
+
+他闪身出了门，像从未出现过一样。
+
+你躺在床上，盯着天花板。凌晨三点。还有六个小时。
+
+<hr>
+<div class="choice-container">
+[[睡觉，保存体力|保存体力]]
+[[继续思考——这个计划有什么漏洞？|思考漏洞]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="40" name="追问陈默" tags="" position="900,1900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「等等——」你抓住他的手腕，「你怎么知道这么多？安全门、救护车、钥匙——这些信息是从哪里来的？如果这是陷阱——」
+
+「如果这是陷阱，我已经在陷阱里了。」陈默挣脱你的手，「我在这个鬼地方待了八个月。八个月里，我装疯卖傻，偷听对话，收集情报。我知道走廊里每一块松动的地砖，知道每个护士的换班时间，知道林医生每周三下午会去市里的学术会议——」
+
+他停下来，喘了口气。
+
+「我知道你在害怕。我也害怕。但害怕不会让我们出去。行动才会。」
+
+<<silently>>
+<<set $suspicion to $suspicion + 10>>
+<<set $willpower to $willpower + 5>>
+<</silently>>
+
+<div class="warning">🔍 怀疑 +10 | 💪 意志 +5</div>
+
+<hr>
+<div class="choice-container">
+[[「好吧。告诉我完整计划。」|制定计划]]
+[[「我还是不能确定……」|暂时观望]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="41" name="询问人格替换" tags="" position="900,2100" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「人格替换……是什么意思？」你的声音在发抖。
+
+陈默的表情变得严肃。「意思是，他们会彻底抹除你的原始人格，植入一个全新的人格。一个听话的、顺从的、永远不会质疑他们的人格。」
+
+「那……原来的我呢？」
+
+「死了。」他说得很轻，但每个字都像锤子一样砸在你心上，「不是肉体的死亡，而是意识的死亡。你的身体还在，但里面的人已经换了。就像——就像电脑格式化后重装系统。」
+
+<<silently>>
+<<set $sanity to $sanity - 15>>
+<<set $willpower to $willpower + 10>>
+<</silently>>
+
+<div class="warning">🧠 理智 -15 | 💪 意志 +10</div>
+
+「但还有时间。」陈默抓住你的肩膀，「在他们启动第三阶段之前。我们必须逃出去。你愿意吗？」
+
+<hr>
+<div class="choice-container">
+[[「我愿意。告诉我计划。」|制定计划]]
+[[「我需要再想想……」|暂时观望]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="42" name="计划逃跑2" tags="" position="1100,2100" size="100,100">
+<<goto "制定计划">>
+</tw-passagedata>
+
+<tw-passagedata pid="43" name="听取真相" tags="" position="1300,1900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+陈默深吸一口气，开始讲述。
+
+「这个地方表面上是一家私立精神病院，实际上是林医生的私人实验室。他研究催眠和人格控制已经二十年了。我们——这些『病人』——都是他从全国各地『招募』来的实验体。」
+
+「招募？」
+
+「绑架、诱骗、或者……」他顿了顿，「自愿。有些人和你一样，不记得自己是怎么来的。有些人是签了合同的——他们以为自己在参加一个『心理疗愈项目』，不知道真相。」
+
+「真相是什么？」
+
+「真相是，」陈默的眼睛在黑暗中发亮，「林医生相信人类的人格是可以被『编程』的。就像电脑程序一样，可以删除、修改、重写。他的目标是创造『完美的人类』——没有创伤、没有缺陷、完全服从指令。」
+
+<<silently>>
+<<set $memory to $memory + 25>>
+<<set $suspicion to $suspicion + 15>>
+<</silently>>
+
+<div class="warning">🧩 记忆碎片 +25 | 🔍 怀疑 +15</div>
+
+「而明天，」陈默说，「他就要对你启动第三阶段了。人格替换。如果你不想变成另一个人，我们必须在今晚行动。」
+
+<hr>
+<div class="choice-container">
+[[「告诉我计划。」|制定计划]]
+[[「给我一点时间……」|暂时观望]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="44" name="暂时观望" tags="" position="1500,1900" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+「我需要时间考虑。」你说。
+
+陈默看了你很久。然后点点头。「我理解。但时间不多了。」他从口袋里掏出一张折叠的纸条，塞到你手里。「这是我的联系方式——如果你改变主意，凌晨三点前敲三下门。」
+
+他闪身出了门。
+
+你独自坐在黑暗中，手里攥着那张纸条。上面写着一个房间号：「S-03」。
+
+<<silently>>
+<<set $memory to $memory + 10>>
+<</silently>>
+
+<div class="warning">🧩 记忆碎片 +10</div>
+
+<hr>
+[[继续|第一章：第一个夜晚后续]]
+</tw-passagedata>
+
+<tw-passagedata pid="45" name="保存体力" tags="" position="700,2300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你躺下，强迫自己闭上眼睛。
+
+睡眠来得很快。也许是因为紧张，也许是因为疲惫。你做了一个梦——
+
+<span class="memory">一个白色的房间。很多床。你躺在其中一张床上，手腕上绑着约束带。一个声音在说：「S-07，实验开始。」然后是一道白光，然后是一切都被抹去。</span>
+
+你猛然惊醒。房间里还是黑暗的。但有什么不一样了。
+
+床头柜上，那两片药还在。但你没有吃。
+
+你看了看时间——不，房间里没有时钟。但你感觉已经过了很久。
+
+凌晨三点。是时候做决定了。
+
+<<silently>>
+<<set $willpower to $willpower + 10>>
+<</silently>>
+
+<div class="warning">💪 意志 +10</div>
+
+<hr>
+<div class="choice-container">
+[[🚪 敲三下门|逃跑行动]]
+[[🛏️ 继续躺在床上——也许陈默是错的|放弃逃跑]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="46" name="思考漏洞" tags="" position="900,2300" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你躺在床上，大脑飞速运转。
+
+陈默的计划听起来太完美了。完美得可疑。镇静剂、安全门、救护车——他怎么可能知道这么多？如果他真的是前三次逃跑失败被「处理」过记忆，为什么他还能记得这么多细节？
+
+除非……
+
+<span class="warning">除非他就是林医生派来的。</span>
+
+一个测试。一个陷阱。看看你是否有反抗的意图。如果有，就「处理」掉。
+
+但另一方面，如果他说的是真的呢？如果明天你真的会被「人格替换」呢？
+
+<<silently>>
+<<set $suspicion to $suspicion + 20>>
+<<set $sanity to $sanity - 10>>
+<</silently>>
+
+<div class="warning">🔍 怀疑 +20 | 🧠 理智 -10</div>
+
+<hr>
+<div class="choice-container">
+[[不管怎样，值得一试|保存体力]]
+[[太危险了，不能冒险|放弃逃跑]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="47" name="第一章：第一个夜晚后续" tags="" position="1500,2100" size="100,100">
+<<silently>>
+<<set $time to "深夜">>
+<</silently>>
+
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你独自坐在黑暗中。
+
+陈默的话在你脑海中回响。实验体。人格替换。逃跑。
+
+但你无法确定。无法确定他是真的在帮你，还是另一个测试。无法确定你看到的笔记本是真的，还是幻觉。无法确定你自己是谁，还是林医生想让你成为的那个人。
+
+<span class="hypnotic">「不要想太多。休息吧。明天会是美好的一天。」</span>
+
+那个温柔的声音又来了。这一次，你没有抗拒。你让自己沉入那片柔软的黑暗。
+
+<<silently>>
+<<set $hypnosis to $hypnosis + 10>>
+<<set $dependence to $dependence + 10>>
+<</silently>>
+
+<div class="warning">🌀 催眠深度 +10% | 💜 依赖 +10</div>
+
+<hr>
+[[进入梦境|梦境：粉色房间]]
+</tw-passagedata>
+
+<tw-passagedata pid="48" name="逃跑行动" tags="" position="700,2500" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你走到门边，深吸一口气，然后——
+
+<span class="warning">咚。咚。咚。</span>
+
+三声轻响。
+
+等待。漫长的等待。然后——
+
+门锁响了。门开了一条缝。陈默的脸出现在缝隙中，眼睛里闪烁着疯狂而清醒的光芒。
+
+「走。」他说。
+
+你们沿着走廊潜行。白色的墙壁，白色的地板，延伸到远处。陈默的脚步很轻，像一只猫。你努力跟上。
+
+走廊尽头，安全门。陈默输入密码——他从哪里知道的？——门开了。
+
+紧急楼梯。向下。一层，两层，三层……
+
+地下停车场。一辆救护车停在那里，白色的车身在昏暗的灯光下像一头沉睡的野兽。
+
+「快！」陈默拉开驾驶座的门。
+
+就在这时——
+
+<span class="hypnotic">「S-07。停下来。」</span>
+
+林医生的声音。不是从身后传来，而是直接在你的脑海中响起。
+
+<span class="hypnotic">「回来。这是为了你好。」</span>
+
+你的脚步顿住了。
+
+<<silently>>
+<<set $hypnosis to $hypnosis + 20>>
+<</silently>>
+
+<hr>
+<<if $willpower gte 60>>
+<div class="choice-container">
+[[「不——」挣脱那个声音，跳上救护车|成功逃跑]]
+</div>
+<<else>>
+<div class="choice-container">
+[[你的脚开始往回走……|逃跑失败]]
+</div>
+<</if>>
+</tw-passagedata>
+
+<tw-passagedata pid="49" name="放弃逃跑" tags="" position="900,2500" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你躺在床上，没有动。
+
+陈默可能是对的。也可能是错的。你不知道。在不知道的情况下，冒险太愚蠢了。
+
+<span class="hypnotic">「明智的选择。」</span>
+
+那个温柔的声音说。你分不清这是你自己的想法，还是——
+
+不重要了。你闭上眼睛，让自己沉入睡眠。
+
+<<silently>>
+<<set $dependence to $dependence + 15>>
+<<set $hypnosis to $hypnosis + 15>>
+<<set $willpower to $willpower - 10>>
+<</silently>>
+
+<div class="warning">💜 依赖 +15 | 🌀 催眠深度 +15% | 💪 意志 -10</div>
+
+<hr>
+[[进入梦境|梦境：粉色房间]]
+</tw-passagedata>
+
+<tw-passagedata pid="50" name="成功逃跑" tags="" position="500,2700" size="100,100">
+<div class="ending-box">
+<h1>✨ 第一章 · 特殊结局：破晓 ✨</h1>
+<div class="stat-box" style="margin: 20px auto; max-width: 500px; text-align: left;">
+📊 最终状态<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion<br>
+💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<p>你挣脱了那个声音。</p>
+<p>你跳上救护车。陈默猛踩油门。白色的建筑在后视镜中越来越远，越来越小，最后消失在黑暗中。</p>
+<p>但你手腕上的疤痕还在。你脑海中的声音还在。你知道，这只是开始。</p>
+<p>林医生不会放弃。而你的记忆，你的真相，你的自我——</p>
+<p><span class="warning">还需要你自己去找回。</span></p>
+<p><em>（此结局需要高意志力才能解锁）</em></p>
+[[🔄 重新开始|初始化]]
+</div>
+</tw-passagedata>
+
+<tw-passagedata pid="51" name="逃跑失败" tags="" position="900,2700" size="100,100">
+<div class="stat-box">
+📅 第 $day 天 | 🕐 $time
+<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion | 💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<hr>
+
+你的脚开始往回走。
+
+不——你在心里尖叫——但你的身体不听使唤。像是有无形的线牵着你，一步一步，走向那个白色的建筑，走向林医生的微笑。
+
+陈默在你身后喊了什么。但你听不清。你的世界只剩下那个温柔的声音：
+
+<span class="hypnotic">「回来。这是为了你好。」</span>
+
+是的。为了你好。你一直都知道。逃跑是愚蠢的。反抗是痛苦的。服从才是安全的。
+
+你走进大门。苏护士在那里等你。她的笑容和林医生一模一样。
+
+「欢迎回家，S-07。」她说。
+
+<<silently>>
+<<set $hypnosis to $hypnosis + 30>>
+<<set $dependence to $dependence + 30>>
+<<set $willpower to $willpower - 20>>
+<<set $memory to 0>>
+<</silently>>
+
+<div class="warning">🌀 催眠深度 +30% | 💜 依赖 +30 | 💪 意志 -20 | 🧩 记忆碎片清零</div>
+
+<hr>
+<div class="ending-box">
+<h1 style="color: #ffab91;">🌫️ 第一章 · 结局：归巢 🌫️</h1>
+<div class="stat-box" style="margin: 20px auto; max-width: 500px; text-align: left;">
+📊 最终状态<br>
+🧠 理智: $sanity | 💪 意志: $willpower | 🔍 怀疑: $suspicion<br>
+💜 依赖: $dependence | 🧩 记忆: $memory | 🌀 催眠: $hypnosis%
+</div>
+<p>你回到了「家」。</p>
+<p>陈默的声音，那些关于实验和人格替换的警告，都像晨雾一样消散了。</p>
+<p>你什么都不记得了。但这让你感到……安心。</p>
+<p>明天，治疗会继续。而你会继续做一个<span class="hypnotic">好病人</span>。</p>
+[[🔄 重新开始|初始化]]
+</div>
+</tw-passagedata>
+
+</tw-storydata>
+</body>
+</html>
